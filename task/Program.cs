@@ -27,7 +27,7 @@ string[] GetArrayStringsLessThanThreeLetters(string[] array)
 
     for (int i = 0; i < size; i++)
     {
-        if (array[i] != null && array[i].Length <= 3 && array[i].Length > 0)
+        if (CheckArrayToStringsLessThanThreeLetters(array, i))
         {
             count++; 
         }
@@ -37,7 +37,7 @@ string[] GetArrayStringsLessThanThreeLetters(string[] array)
 
     for(int i = 0, j = 0; i < size; i++)
     {
-        if (array[i] != null && array[i].Length <= 3 && array[i].Length > 0)
+        if (CheckArrayToStringsLessThanThreeLetters(array, i))
         {
             tempArray[j] = array[i];
             j++; 
@@ -48,13 +48,29 @@ string[] GetArrayStringsLessThanThreeLetters(string[] array)
 }
 
 /*
+    метод CheckArrayToStringsLessThanThreeLetters()
+    принимает в качестве аргумента массив и целое число(индекс)
+    проверяет выполняется ли по указанному индексу условие:
+    что длина строки меньше, либо равна 3 символам
+    возвращает логическое значение типа bool(true/false)
+*/
+bool CheckArrayToStringsLessThanThreeLetters(string[] array, int index)
+{
+    if (array[index] != null && array[index].Length <= 3 && array[index].Length > 0)
+    {
+        return true;
+    }
+    return false;
+}
+
+/*
     вспомогательный метод, для вывода в консоль элементов массива
 */
 void printArray(string[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        Console.Write($"[{array[i]}]");
+        Console.Write($"[\"{array[i]}\"]");
     }
     Console.WriteLine();
 }
